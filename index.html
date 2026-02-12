@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alex Chen — Creative Developer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'serif': ['Crimson Pro', 'serif'],
+            'sans': ['Inter', 'sans-serif'],
+          },
+          colors: {
+            'ink': '#1a1a1a',
+            'ink-light': '#4a4a4a',
+            'paper': '#fafafa',
+            'accent': '#2563eb',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * {
+      cursor: none;
+    }
+    
+    #custom-cursor {
+      position: fixed;
+      width: 12px;
+      height: 12px;
+      border: 2px solid #1a1a1a;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transition: all 0.15s ease;
+      mix-blend-mode: difference;
+    }
+    
+    #custom-cursor.hover {
+      width: 40px;
+      height: 40px;
+      background: rgba(37, 99, 235, 0.1);
+      border-color: #2563eb;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: revealUp 0.8s ease forwards;
+    }
+
+    @keyframes revealUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .stagger-1 { animation-delay: 0.1s; }
+    .stagger-2 { animation-delay: 0.2s; }
+    .stagger-3 { animation-delay: 0.3s; }
+    .stagger-4 { animation-delay: 0.4s; }
+    .stagger-5 { animation-delay: 0.5s; }
+    .stagger-6 { animation-delay: 0.6s; }
+
+    .project-card {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .project-card:hover .project-image {
+      transform: scale(1.05);
+    }
+
+    .project-image {
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .timeline-line {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, #2563eb, transparent);
+    }
+
+    .social-link {
+      transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+      transform: translateX(4px);
+    }
+
+    body {
+      background: #fafafa;
+    }
+  </style>
+</head>
+<body class="font-sans text-ink antialiased">
+  
+  <!-- Custom Cursor -->
+  <div id="custom-cursor"></div>
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-paper/80 backdrop-blur-md border-b border-ink/5">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 py-6 flex items-center justify-between">
+      <div class="font-serif text-2xl font-semibold tracking-tight">AC</div>
+      <div class="flex items-center gap-8 text-sm font-medium">
+        <a href="#work" class="hover-link text-ink-light hover:text-ink transition-colors">Work</a>
+        <a href="#about" class="hover-link text-ink-light hover:text-ink transition-colors">About</a>
+        <a href="#contact" class="hover-link text-ink-light hover:text-ink transition-colors">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="pt-40 pb-32 px-6 lg:px-12 max-w-7xl mx-auto">
+    <div class="max-w-4xl">
+      <p class="text-ink-light text-sm uppercase tracking-wider mb-6 reveal stagger-1">Creative Developer</p>
+      <h1 class="font-serif text-6xl lg:text-8xl font-semibold leading-none mb-8 reveal stagger-2">
+        Alex Chen
+      </h1>
+      <p class="text-2xl lg:text-3xl text-ink-light leading-relaxed mb-12 reveal stagger-3">
+        Crafting digital experiences at the intersection of design and code. Focused on building beautiful, performant interfaces that people love to use.
+      </p>
+      
+      <!-- Social Links -->
+      <div class="flex flex-col gap-4 text-lg reveal stagger-4">
+        <a href="https://github.com" target="_blank" class="social-link hover-link flex items-center gap-3 text-ink-light hover:text-accent">
+          <span class="text-sm font-medium">GitHub</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+        <a href="https://linkedin.com" target="_blank" class="social-link hover-link flex items-center gap-3 text-ink-light hover:text-accent">
+          <span class="text-sm font-medium">LinkedIn</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+        <a href="https://twitter.com" target="_blank" class="social-link hover-link flex items-center gap-3 text-ink-light hover:text-accent">
+          <span class="text-sm font-medium">Twitter</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+        <a href="mailto:hello@alexchen.dev" class="social-link hover-link flex items-center gap-3 text-ink-light hover:text-accent">
+          <span class="text-sm font-medium">Email</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Grid -->
+  <section id="work" class="py-24 px-6 lg:px-12 max-w-7xl mx-auto">
+    <div class="mb-16">
+      <h2 class="font-serif text-5xl lg:text-6xl font-semibold mb-4">Selected Work</h2>
+      <p class="text-xl text-ink-light">Recent projects and explorations</p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+      
+      <!-- Project 1 -->
+      <article class="project-card hover-link group">
+        <div class="aspect-[4/3] bg-gradient-to-br from-blue-50 to-indigo-100 rounded-sm overflow-hidden mb-6">
+          <img src="https://images.unsplash.com/photo-1618761714954-0b8cd0026356?w=800&h=600&fit=crop" 
+               alt="Nimbus Dashboard" 
+               class="project-image w-full h-full object-cover opacity-90">
+        </div>
+        <h3 class="font-serif text-3xl font-semibold mb-3 group-hover:text-accent transition-colors">Nimbus Dashboard</h3>
+        <p class="text-lg text-ink-light leading-relaxed mb-4">
+          Real-time analytics platform for cloud infrastructure monitoring. Built with microservices architecture and WebSocket live updates.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 bg-ink/5 text-ink text-sm font-medium rounded-full">React</span>
+          <span class="px-3 py-1 bg-ink/5 text-ink text-sm font-medium rounded-full">TypeScript</span>
+          <span class="px-3 py-1 bg-ink/5 text-ink text-sm font-medium rounded-full">D3.js</span>
+          <span class="px-3 py-1 bg-ink/5 text-ink text-sm font-medium rounded-full">Node.js</span>
+        </div>
+      </article>
+
+      <!-- Project 2 -->
+      <article class="project-card hover-link group">
+        <div class="aspect-[4/3] bg-gradient-to-br from-purple-50 to-pink-100 rounded-sm overflow-hidden mb-6">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop" 
+               alt="Verse Creative Studio" 
+               class="project-image w-full h-full object-cover opacity-90">
+        </div>
+        <h3 class="font-serif text-3xl font-semibold mb-3 group-hover:text-accent transition-colors">Verse Creative Studio</h3>
+        <p class="text-lg text-ink-light leading-relaxed mb-4">
+          Award-winning agency website featuring immersive WebGL experiences and smooth page transitions.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 bg-ink/5 text-ink text-sm font-medium rounded-full">Next.js</span>
+          <span class="px-3 py-1 bg-ink/5 text-ink text-sm font-medium rounded-full">Three.js</span>
+          <span class="px-3 py-1 bg-ink/5 text-ink text-sm font-medium rounded-full">GSAP</span>
+          <span class="px-3 py-1 bg-ink/5 text-ink text-sm font-medium rounded-full">Tailwind</span>
+        </div>
+      </article>
+
+      <!-- Project 3 -->
+      <article class="project-card hover-link group">
+        <div class="aspect-[4/3] bg-gradient-to-br from-green-50 to-emerald-100 rounded-sm overflow-hidden mb-6">
+          <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=600&fit=crop" 
+               alt="Bloom Wellness App" 
+               class="project-image w-full h-full object-cover opacity-90">
+        </div>
+        <h3 class="font-serif text-3xl font-semibold mb-3 group-hover:text-accent transition-colors">Bloom Wellness App</h3>
+        <p class="text-lg text-ink-light leading-relaxed mb-4">
+          Mobile-first mental health companion with mood tracking, guided meditation, and personalized insights.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 bg-ink/5 text-ink text-sm font-medium rounded-full">React Native</span>
+          <span class="px-3 py-1 bg-ink/5 text-ink text-sm font-medium rounded-full">Firebase</span>
+          <span class="px-3 py-1 bg-ink/5 text-ink text-sm font-medium rounded-full">ML Kit</span>
+          <span class="px-3 py-1 bg-ink/5 text-ink text-sm font-medium rounded-full">Redux</span>
+        </div>
+      </article>
+
+      <!-- Project 4 -->
+      <article class="project-card hover-link group">
+        <div class="aspect-[4/3] bg-gradient-to-br from-orange-50 to-amber-100 rounded-sm overflow-hidden mb-6">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop" 
+               alt="Codebase AI Assistant" 
+               class="project-image w-full h-full object-cover opacity-90">
+        </div>
+        <h3 class="font-serif text-3xl font-semibold mb-3 group-hover:text-accent transition-colors">Codebase AI Assistant</h3>
+        <p class="text-lg text-ink-light leading-relaxed mb-4">
+          AI-powered code review and documentation tool. Integrates with GitHub to provide intelligent suggestions and context-aware analysis.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 bg-ink/5 text-ink text-sm font-medium rounded-full">Python</span>
+          <span class="px-3 py-1 bg-ink/5 text-ink text-sm font-medium rounded-full">OpenAI API</span>
+          <span class="px-3 py-1 bg-ink/5 text-ink text-sm font-medium rounded-full">FastAPI</span>
+          <span class="px-3 py-1 bg-ink/5 text-ink text-sm font-medium rounded-full">PostgreSQL</span>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="py-24 px-6 lg:px-12 max-w-7xl mx-auto">
+    <div class="mb-16">
+      <h2 class="font-serif text-5xl lg:text-6xl font-semibold mb-4">Expertise</h2>
+      <p class="text-xl text-ink-light">Technologies and tools I work with</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+      <div>
+        <h3 class="font-serif text-2xl font-semibold mb-6">Frontend</h3>
+        <ul class="space-y-3 text-lg text-ink-light">
+          <li>React, Next.js, Vue</li>
+          <li>TypeScript, JavaScript</li>
+          <li>Tailwind CSS, Styled Components</li>
+          <li>Three.js, GSAP, Framer Motion</li>
+          <li>WebGL, Canvas API</li>
+        </ul>
+      </div>
+      
+      <div>
+        <h3 class="font-serif text-2xl font-semibold mb-6">Backend</h3>
+        <ul class="space-y-3 text-lg text-ink-light">
+          <li>Node.js, Express, Fastify</li>
+          <li>Python, FastAPI, Django</li>
+          <li>PostgreSQL, MongoDB</li>
+          <li>Redis, GraphQL</li>
+          <li>Docker, Kubernetes</li>
+        </ul>
+      </div>
+      
+      <div>
+        <h3 class="font-serif text-2xl font-semibold mb-6">Tools & Design</h3>
+        <ul class="space-y-3 text-lg text-ink-light">
+          <li>Figma, Adobe Creative Suite</li>
+          <li>Git, GitHub Actions</li>
+          <li>AWS, Vercel, Railway</li>
+          <li>Webpack, Vite, esbuild</li>
+          <li>Jest, Playwright, Vitest</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Timeline -->
+  <section id="about" class="py-24 px-6 lg:px-12 max-w-7xl mx-auto">
+    <div class="mb-16">
+      <h2 class="font-serif text-5xl lg:text-6xl font-semibold mb-4">Experience</h2>
+      <p class="text-xl text-ink-light">Professional journey</p>
+    </div>
+
+    <div class="relative pl-8 lg:pl-12 space-y-12">
+      <div class="timeline-line"></div>
+      
+      <!-- Timeline Item 1 -->
+      <div class="relative">
+        <div class="absolute left-[-2.4rem] lg:left-[-3rem] top-1 w-4 h-4 bg-accent rounded-full border-4 border-paper"></div>
+        <div class="mb-2">
+          <span class="text-sm font-medium text-accent">2022 — Present</span>
+        </div>
+        <h3 class="font-serif text-3xl font-semibold mb-2">Senior Frontend Engineer</h3>
+        <p class="text-xl text-ink-light mb-4">Stripe</p>
+        <p class="text-lg text-ink-light leading-relaxed">
+          Leading development of payment dashboard interfaces used by millions of businesses. Architected design system and optimized performance for complex data visualizations.
+        </p>
+      </div>
+
+      <!-- Timeline Item 2 -->
+      <div class="relative">
+        <div class="absolute left-[-2.4rem] lg:left-[-3rem] top-1 w-4 h-4 bg-ink/20 rounded-full border-4 border-paper"></div>
+        <div class="mb-2">
+          <span class="text-sm font-medium text-ink-light">2020 — 2022</span>
+        </div>
+        <h3 class="font-serif text-3xl font-semibold mb-2">Full Stack Developer</h3>
+        <p class="text-xl text-ink-light mb-4">Notion</p>
+        <p class="text-lg text-ink-light leading-relaxed">
+          Built collaborative features and real-time sync infrastructure. Contributed to editor performance improvements and mobile web experience.
+        </p>
+      </div>
+
+      <!-- Timeline Item 3 -->
+      <div class="relative">
+        <div class="absolute left-[-2.4rem] lg:left-[-3rem] top-1 w-4 h-4 bg-ink/20 rounded-full border-4 border-paper"></div>
+        <div class="mb-2">
+          <span class="text-sm font-medium text-ink-light">2018 — 2020</span>
+        </div>
+        <h3 class="font-serif text-3xl font-semibold mb-2">Creative Developer</h3>
+        <p class="text-xl text-ink-light mb-4">IDEO</p>
+        <p class="text-lg text-ink-light leading-relaxed">
+          Created interactive prototypes and web experiences for client projects. Collaborated with designers to bring creative concepts to life through code.
+        </p>
+      </div>
+
+      <!-- Timeline Item 4 -->
+      <div class="relative">
+        <div class="absolute left-[-2.4rem] lg:left-[-3rem] top-1 w-4 h-4 bg-ink/20 rounded-full border-4 border-paper"></div>
+        <div class="mb-2">
+          <span class="text-sm font-medium text-ink-light">2016 — 2018</span>
+        </div>
+        <h3 class="font-serif text-3xl font-semibold mb-2">Junior Developer</h3>
+        <p class="text-xl text-ink-light mb-4">Shopify</p>
+        <p class="text-lg text-ink-light leading-relaxed">
+          Developed merchant-facing features and contributed to Polaris design system. Learned foundations of scalable web architecture.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Contact Card -->
+  <section id="contact" class="py-24 px-6 lg:px-12 max-w-7xl mx-auto mb-24">
+    <div class="bg-ink text-paper rounded-sm p-12 lg:p-16">
+      <div class="max-w-3xl">
+        <p class="text-sm uppercase tracking-wider mb-6 opacity-60">Get in touch</p>
+        <h2 class="font-serif text-5xl lg:text-6xl font-semibold mb-8 leading-tight">
+          Let's create something remarkable together
+        </h2>
+        <p class="text-xl opacity-80 mb-12 leading-relaxed">
+          Currently available for freelance projects and collaborations. Whether you have a question or just want to say hello, I'll do my best to get back to you.
+        </p>
+        <a href="mailto:hello@alexchen.dev" 
+           class="hover-link inline-flex items-center gap-3 text-xl font-medium border-b-2 border-paper pb-1 hover:border-accent hover:text-accent transition-all">
+          hello@alexchen.dev
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 px-6 lg:px-12 max-w-7xl mx-auto border-t border-ink/5">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+      <p class="text-ink-light">© 2026 Alex Chen. All rights reserved.</p>
+      <div class="flex gap-8 text-sm">
+        <a href="https://github.com" target="_blank" class="hover-link text-ink-light hover:text-ink transition-colors">GitHub</a>
+        <a href="https://linkedin.com" target="_blank" class="hover-link text-ink-light hover:text-ink transition-colors">LinkedIn</a>
+        <a href="https://twitter.com" target="_blank" class="hover-link text-ink-light hover:text-ink transition-colors">Twitter</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
